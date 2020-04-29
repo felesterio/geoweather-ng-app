@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -88,6 +89,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +121,124 @@
           }
         }
       }
-    }},
+    },
+    "create-report": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/create-report",
+      "sourceRoot": "projects/create-report/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/create-report",
+            "index": "projects/create-report/src/index.html",
+            "main": "projects/create-report/src/main.ts",
+            "polyfills": "projects/create-report/src/polyfills.ts",
+            "tsConfig": "projects/create-report/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/create-report/src/favicon.ico",
+              "projects/create-report/src/assets"
+            ],
+            "styles": [
+              "projects/create-report/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/create-report/src/environments/environment.ts",
+                  "with": "projects/create-report/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "create-report:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "create-report:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "create-report:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/create-report/src/test.ts",
+            "polyfills": "projects/create-report/src/polyfills.ts",
+            "tsConfig": "projects/create-report/tsconfig.spec.json",
+            "karmaConfig": "projects/create-report/karma.conf.js",
+            "assets": [
+              "projects/create-report/src/favicon.ico",
+              "projects/create-report/src/assets"
+            ],
+            "styles": [
+              "projects/create-report/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/create-report/tsconfig.app.json",
+              "projects/create-report/tsconfig.spec.json",
+              "projects/create-report/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/create-report/e2e/protractor.conf.js",
+            "devServerTarget": "create-report:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "create-report:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
   "defaultProject": "geoweather-ng-app"
 }

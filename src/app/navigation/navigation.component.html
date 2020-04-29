@@ -1,1 +1,18 @@
-<p>navigation works!</p>
+<style>
+  .example-icon {
+    padding: 0 14px;
+    cursor: pointer;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+</style>
+
+<mat-toolbar color="secondary">
+  <mat-toolbar-row>
+    <span style="font-size: 12px; cursor: pointer;" routerLink="/">GEOWEATHER</span>
+    <span class="example-spacer"></span>
+    <mat-icon class="example-icon" routerLink="/profile">account_box</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
