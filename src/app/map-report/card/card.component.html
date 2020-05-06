@@ -1,0 +1,23 @@
+<mat-card class="card">
+  <mat-card-title>{{formatDate(report.createdOn)}}</mat-card-title>
+  <mat-card-subtitle>City: {{report.city}}, State: {{report.state}}</mat-card-subtitle>
+  <mat-card-subtitle>{{report.latitude}}° N, {{report.longitude}}° W</mat-card-subtitle>
+  <mat-card-content>
+    <p>
+      {{report.description}}
+    </p>
+    <mat-chip-list>
+      <div *ngFor="let ev of report.events">
+        <mat-chip matTooltip="{{formatDetails(ev.details)}}">{{formatEventType(ev.eventType, ev.details)}}</mat-chip>
+      </div>
+    </mat-chip-list>
+
+    <mat-chip-list>
+      <mat-card-actions (click)="verifiedReport()">
+        <button mat-button [disabled]="buttonDisabled">Confirm Report</button>
+      </mat-card-actions>
+      <mat-card-content style="color:lime; padding-left: 10px;">+{{report.verificationCounter}} verified
+      </mat-card-content>
+    </mat-chip-list>
+  </mat-card-content>
+</mat-card>

@@ -1,1 +1,87 @@
-<p>create-report works!</p>
+<div fxLayoutAlign="center center">
+  <mat-card fxFlex="50" fxFlexFill>
+    <mat-toolbar color="primary">Create New Storm Report</mat-toolbar>
+    <form name="myForm" fxLayoutAlign="stretch" fxLayout="column" name="event-details" (ngSubmit)="submit()">
+      <div></div>
+      <mat-form-field>
+        <input required matInput type="text" name="city" id="city" placeholder="City" maxlength="30"
+               [(ngModel)]="model.city">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input required matInput type="text" name="state" id="state" placeholder="State" maxlength="20"
+               [(ngModel)]="model.state">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input required matInput type="number" name="latitude" id="lat" placeholder="Lat" maxlength="10" min="-90"
+               max="90"
+               [(ngModel)]="model.latitude">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input required matInput type="number" name="longitude" id="long" placeholder="Long" maxlength="10" min="-180"
+               max="180"
+               [(ngModel)]="model.longitude">
+      </mat-form-field>
+
+      <mat-label>Description</mat-label>
+      <textarea required [(ngModel)]="model.description" name="description" matInput class="largeTextBox"
+                maxlength="499"></textarea>
+
+      <div fxLayout="row">
+        <mat-checkbox [checked]="windChecked" [(ngModel)]="windChecked" name="windChecked">WIND</mat-checkbox>
+        <mat-form-field appearance="fill" style="padding-left: 15px">
+          <mat-label>SPEED</mat-label>
+          <div>
+            <input matInput type="number" [attr.required]="windChecked"
+                   [(ngModel)]="wind.details['speed']" name="speed">
+          </div>
+        </mat-form-field>
+        <mat-form-field appearance="fill" style="padding-left: 15px">
+          <mat-label>DIRECTION</mat-label>
+          <input matInput type="number" [attr.required]="windChecked"
+                 [(ngModel)]="wind.details['direction']" name="direction">
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div fxLayout="row">
+        <mat-checkbox [checked]="hailChecked" [(ngModel)]="hailChecked" name="hailChecked">HAIL</mat-checkbox>
+        <mat-form-field appearance="fill" style="padding-left: 15px">
+          <mat-label>HAIL DIAMETER</mat-label>
+          <input matInput type="number" [attr.required]="hailChecked"
+                 [(ngModel)]="hail.details['hail_diameter']" name="hail_diameter">
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div fxLayout="row">
+        <mat-checkbox [checked]="floodChecked" [(ngModel)]="floodChecked" name="floodChecked">FLOOD</mat-checkbox>
+        <mat-form-field appearance="fill" style="padding-left: 15px">
+          <mat-label>WATER LEVEL</mat-label>
+          <input matInput type="number" [attr.required]="floodChecked"
+                 [(ngModel)]="flood.details['water_depth']" name="depth">
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div fxLayout="row">
+        <mat-checkbox [checked]="otherChecked" [(ngModel)]="otherChecked" name="otherChecked">OTHER</mat-checkbox>
+        <mat-form-field appearance="fill" style="padding-left: 15px">
+          <mat-label>EVENT TYPE</mat-label>
+          <input matInput type="text" [attr.required]="otherChecked"
+                 [(ngModel)]="other.details['event_type']" name="other">
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div *ngIf="model.city && model.state && model.description">
+        <div layout="row" fxLayoutAlign="center center">
+          <button mat-raised-button="Submit" type="submit" class="reportButton">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

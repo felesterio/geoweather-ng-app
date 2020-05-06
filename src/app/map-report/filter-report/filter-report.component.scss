@@ -1,0 +1,82 @@
+.filter {
+  max-width: 300px;
+  padding: 5px;
+  background-color: black;
+}
+
+::ng-deep {
+  .custom-slider .ng5-slider .ng5-slider-bar {
+    background: dimgrey;
+    height: 2px;
+  }
+  .custom-slider .ng5-slider .ng5-slider-selection {
+    background: gold;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer {
+    width: 8px;
+    height: 8px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: orange;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-pointer:after {
+    display: none;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-bubble {
+    bottom: 14px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-limit {
+    font-weight: bold;
+    color: orange;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick {
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #ffe4d1;
+    top: -1px;
+  }
+
+  .custom-slider .ng5-slider .ng5-slider-tick.ng5-slider-selected {
+    background: yellow;
+  }
+}
+
+::ng-deep .mat-form-field {
+  .mat-input-element {
+    color: yellow;
+  }
+  .mat-form-field-label {
+    color: slategray;
+  }
+  .mat-form-field-underline {
+    background-color: yellow;
+  }
+  .mat-form-field-ripple {
+    background-color: slategray;
+  }
+  .mat-form-field-required-marker {
+    color: slategray;
+  }
+}
+
+::ng-deep .mat-form-field.mat-focused {
+  .mat-form-field-label {
+    color: gold;
+  }
+  .mat-form-field-ripple {
+    background-color: gold;
+  }
+  .mat-form-field-required-marker {
+    color: gold;
+  }
+  .mat-input-element {
+    color: gold;
+  }
+}
